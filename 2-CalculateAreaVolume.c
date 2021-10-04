@@ -5,18 +5,20 @@
 #define PI 3.14159265
 
 double getCircleArea(double radius) {
-  // TODO 2: Complete the getArea function
-  return 0;
+  return PI * radius * radius;
 }
 
 double getConeVolume(double radius, double height) {
-  // TODO 3: Complete the getConeVolume function using getArea
-  return 0;
+  return getCircleArea(radius) * height / 3;
 }
 
-// TODO 4: Write your own function to calculate sphere surface area
+double getSphereSurfaceArea(double radius) {
+  return 4 * getCircleArea(radius);
+}
 
-// TODO 5: Write your own function to calculate sphere volume
+double getSphereVolume(double radius) {
+  return 4 * PI * radius * radius * radius / 3;
+}
 
 int main() {
   /* Ask for user's input */
@@ -27,13 +29,20 @@ int main() {
   scanf("%lf", &height);
 
   /* Validate user's input */
-  // TODO 1: Validate the input values and ask for re-entering if they are not positive
+  while (radius <= 0) {
+    printf("Invalid radius value, please input a non negative value: ");
+    scanf("%lf", &radius);
+  }
+  while (height <= 0) {
+    printf("Invalid height value, please input a non negative value: ");
+    scanf("%lf", &height);
+  }
 
   /* Output calculated values */
   printf("Area of circle with radius %.2f cm is %.2f cm^2.\n", radius, getCircleArea(radius));
   printf("Volume of cone with radius %.2f cm and height %.2f cm is %.2f cm^3.\n", radius, height, getConeVolume(radius, height));
-  // TODO 6: Add printf() to show the calculated sphere surface area
-  // TODO 7: Add printf() to show the calculated sphere volume
+  printf("Surface area of sphere with radius %.2f cm is %.2f cm^2.\n", radius, getSphereSurfaceArea(radius));
+  printf("Volume of sphere with radius %.2f cm is %.2f cm^3.\n", radius, getSphereVolume(radius));
 
   return 0;
 }
