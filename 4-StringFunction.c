@@ -42,10 +42,28 @@ void example_strncpy() {
   printf("Destination: %s\n", destination);
 }
 
+void compareTwoString(){
+  char strA[] = "Hello";
+  char strB[6] = "Hello";
+
+  if (strA == strB) {
+    printf("strA has the same address with strB\n");
+  } else {
+    printf("strA has the different address with strB\n");
+  }
+
+  if (strcmp(strA, strB) == 0) {
+    printf("strA has the same content with strB\n");
+  } else {
+    printf("strA has the different content with strB\n");
+  }
+}
+
 int main() {
   example_strlen();
   example_strcpy();
   example_strncpy();
-
+  example_strcmp();
+  compareTwoString();
   return 0;
 }
