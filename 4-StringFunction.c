@@ -42,7 +42,7 @@ void example_strncpy() {
   printf("Destination: %s\n", destination);
 }
 
-void compareTwoString(){
+void compareTwoStrings(){
   char strA[] = "Hello";
   char strB[6] = "Hello";
 
@@ -59,11 +59,45 @@ void compareTwoString(){
   }
 }
 
+void sortStrings() {
+  char str[5][50], temp[50];
+
+  // Get the number of str using sizeof
+  int totalSize = sizeof(str);                // 5 * 50 = 250
+  int oneStrSize = sizeof(str[0]);            // 50
+  int numberOfStr = totalSize/oneStrSize;     // 250 / 50 = 5
+
+  printf("Enter %d words: ", numberOfStr);
+
+  // Getting strings input
+  for (int i = 0; i < numberOfStr; ++i) {
+    scanf("%s", str[i]);  //str[0]=Cat, str[1]=Boy, str[2]=Amy, str[3]=Zoe, str[4]=Danny
+  }
+
+  // storing strings in the lexicographical order
+  for (int i = 0; i < numberOfStr; ++i) {
+    for (int j = i + 1; j < numberOfStr; ++j) {
+      // swapping strings if they are not in the lexicographical order
+      if (strcmp(str[i], str[j]) > 0) {
+        strcpy(temp, str[i]);
+        strcpy(str[i], str[j]);
+        strcpy(str[j], temp);
+      }
+    }
+  }
+
+  printf("\nOrder the string in lexicographical order: \n");
+  for (int i = 0; i < numberOfStr; ++i) {
+    printf("%s\n", str[i]);
+  }
+}
+
 int main() {
-  example_strlen();
-  example_strcpy();
-  example_strncpy();
-  example_strcmp();
-  compareTwoString();
+  // example_strlen();
+  // example_strcpy();
+  // example_strncpy();
+  // example_strcmp();
+  // compareTwoString();
+  sortString();
   return 0;
 }
