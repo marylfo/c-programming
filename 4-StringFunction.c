@@ -42,6 +42,26 @@ void example_strncpy() {
   printf("Destination: %s\n", destination);
 }
 
+void example_strcat() {
+  char source[100] = "Hello ";
+  char destination[100] = "World";
+
+  printf("strcat\n");
+  strcat(source, destination);
+  printf("Source: %s\n", source);
+  printf("Destination: %s\n", destination);
+}
+
+void example_strncat() {
+  char source[100] = "Hello ";
+  char destination[100] = "String, World";
+
+  printf("strncat\n");
+  strncat(source, destination, 6);
+  printf("Source: %s\n", source);
+  printf("Destination: %s\n", destination);
+}
+
 void compareTwoStrings(){
   char strA[] = "Hello";
   char strB[6] = "Hello";
@@ -97,7 +117,9 @@ int main() {
   // example_strcpy();
   // example_strncpy();
   // example_strcmp();
+  example_strcat();
+  example_strncat();
   // compareTwoString();
-  sortString();
+  // sortString();
   return 0;
 }
